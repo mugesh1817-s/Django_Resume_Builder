@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resume Page</title>
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+</head>
+<body>
+    
+    
+        <div class="container"> 
+    <div class="preview-cnt">
+        
+        <!-- Left Column (Personal Information) -->
+        <div class="preview-cnt-l bg-green text-white">
+            <!-- Profile Image -->
+            {% csrf_token %}
+            <div class="preview-blk">
+                {% for member in member %}
+                <div class="preview-image">
+                    <img src="{{member.image.url}}" alt="" class="photo" style="width: 150px; height: 130px;">
+                </div>
+                <div class="preview-item preview-item-name">
+                    <input type="text" value="{{ member.firstname }}" style="font:bold;color: black;" name="firstname" disabled class="form-control" placeholder="Full Name">
+                </div>
+                <div class="preview-item">
+                    <input type="text" value="{{ member.designation }}" style="font:bold;color: black;" name="designation" disabled class="form-control" placeholder="Designation">
+                </div>
+            </div>
+            
+            <!-- About Section -->
+            <div class="preview-blk">
+                <div class="preview-blk-title">
+                    <h3>About</h3>
+                </div>
+                <div class="preview-blk-list">
+                    <div class="preview-item">
+                        <input type="text" value="{{ member.phone }}" style="font:bold;color: black;" name="phone" disabled class="form-control" placeholder="Phone Number">
+                    </div>
+                    <div class="preview-item">
+                        <input type="text" value="{{ member.email }}" style="font:bold;color: black;" name="email" disabled class="form-control" placeholder="Email">
+                    </div>
+                    <div class="preview-item">
+                        <input type="text" value="{{ member.address }}" style="font:bold;color: black;" name="address" disabled class="form-control" placeholder="Address">
+                    </div>
+                    <div class="preview-item">
+                        <input type="text" value="{{ member.summary }}" style="font:bold;color: black;" name="summary" disabled class="form-control" placeholder="Summary">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="preview-blk">
+                <div class="preview-blk-title">
+                    <h3>Skills</h3>
+                </div>
+                <div class="skills-items preview-blk-list" id="skills_dsp">
+                    <input type="text" value="{{ member.skills }}" style="font-display:bold;color: black;" name="skills" disabled class="form-control" placeholder="Skills">
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column (Additional Information) -->
+        <div class="preview-cnt-r bg-white">
+            
+            <!-- Achievements Section -->
+            <div class="preview-blk">
+                <div class="preview-blk-title">
+                    <h3>Achievements</h3>
+                </div>
+                <div class="achievements-items preview-blk-list" id="achievements_dsp">
+                    <input type="text" value="{{ member.title }}" name="achievement_title" disabled class="form-control" placeholder="Achievement Title">
+                    <input type="text" value="{{ member.description }}" name="achievement_description" disabled class="form-control" placeholder="Achievement Description">
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="preview-blk">
+                <div class="preview-blk-title">
+                    <h3>Education</h3>
+                </div>
+                <div class="educations-items preview-blk-list" id="educations_dsp">
+                    <input type="text" value="{{ member.school }}" name="education_institution" disabled class="form-control" placeholder="Institution">
+                    <input type="text" value="{{ member.degree }}" name="education_degree" disabled class="form-control" placeholder="Degree">
+                    <input type="text" value="{{ member.city }}" name="education_year" disabled class="form-control" placeholder="Year"> 
+                    <input type="text" value="{{ member.startdate1 }}" name="education_year" disabled class="form-control" placeholder="Year">
+                    <input type="text" value="{{ member.enddate1 }}" name="education_year" disabled class="form-control" placeholder="Year">
+                </div>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="preview-blk">
+                <div class="preview-blk-title">
+                    <h3>Experience</h3>
+                </div>
+                <div class="experiences-items preview-blk-list" id="experiences_dsp">
+                    <input type="text" value="{{ member.position }}" name="job_title" disabled class="form-control" placeholder="Job Title">
+                    <input type="text" value="{{ member.company }}" name="company" disabled class="form-control" placeholder="Company">
+                    <input type="text" value="{{ member.location }}" name="location" disabled class="form-control" placeholder="Location">
+                    <input type="text" value="{{ member.startdate }}" name="startdate" disabled class="form-control" placeholder="Start Date">
+                    <input type="text" value="{{ member.enddate }}" name="enddate" disabled class="form-control" placeholder="End Date">
+                    <input type="text" value="{{ member.jobdescription}}" name="description3" disabled class="form-control" placeholder="Job Description">
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="preview-blk">
+                <div class="preview-blk-title">
+                    <h3>Projects</h3>
+                </div>
+                <div class="projects-items preview-blk-list" id="projects_dsp">
+                    <input type="text" value="{{ member.projectname }}" name="projectname" disabled class="form-control" placeholder="Project Name">
+                    <input type="text" value="{{ member.projectlink }}" name="projectlink" disabled class="form-control" placeholder="Project Link">
+                    <input type="text" value="{{ member.projectdescription }}" name="project_description" disabled class="form-control" placeholder="Project Description">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
